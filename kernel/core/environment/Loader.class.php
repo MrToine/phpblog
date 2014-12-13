@@ -21,20 +21,20 @@ class Loader {
 
 		define('MODULE', $location);
 
-		$location_controllers = PATH_TO_ROOT.'/'.$location.'/controllers/';
-		$location_view = PATH_TO_ROOT.'/'.$location.'/views';
+		$location_controllers = PATH_TO_ROOT.'/modules/'.$location.'/controllers/';
+		$location_view = PATH_TO_ROOT.'/modules/'.$location.'/views';
 
 		if(file_exists($location_controllers)){
 
 			if(file_exists($location_view)){
 
-				$dir_services = PATH_TO_ROOT.'/'.MODULE.'/services';
+				$dir_services = PATH_TO_ROOT.'/modules/'.MODULE.'/services';
 
 				if(file_exists($dir_services)){
 
 					function autoload($class_name){
 
-						require PATH_TO_ROOT.'/'.MODULE.'/services/'.$class_name.'.class.php';
+						require PATH_TO_ROOT.'/modules/'.MODULE.'/services/'.$class_name.'.class.php';
 
 					}
 

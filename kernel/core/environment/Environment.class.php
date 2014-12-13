@@ -1,6 +1,6 @@
 <?php
 /*##################################################
- *                                init.php
+ *                                Environment.class.php
  *                            -------------------
  *   begin                : November 09, 2014
  *   copyright            : (C) 2014 Anthony VIOLET
