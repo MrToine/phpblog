@@ -69,6 +69,38 @@ class Query {
 
 	}
 
+	public static function new_entry($data_file, $array, $datas) {
+
+		$array[$datas['id']] = $new_data;
+
+		$save_file ="";
+
+		foreach ($array as $key => $group) {
+			
+			$save_file .= "[".$key."]";
+
+			foreach($group as $key => $item) {
+
+				$save_file .= $key."=".$item;
+
+			}
+
+			if(false===@file_put_contents(PATH_TO_ROOT.'/kernel/database/local/data/'.$data_file.'.ini', $save_file)) {
+
+				$result = false;
+
+			}else{
+
+				$result = true;
+
+			}
+
+		}
+
+		//return $result;
+
+	}
+
 	public static function show_list($data, $field, $linked = false, $link = "") {
 
 		foreach ($data as $key => $value) {

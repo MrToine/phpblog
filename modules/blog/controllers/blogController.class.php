@@ -31,6 +31,56 @@ class BlogController extends ModuleController {
 
 		echo Query::parse_date($retour['created']);
 
+		echo '<hr />Aller, maintenant on ecris un nouveau post ! (id =3, name=bloublou etc...)';
+
+		$nb_key = count($posts);
+
+		$nb_key += 1;
+
+		$new_post = array(
+			"id" => $nb_key, 
+			"name" => "bloublou",
+			"slug" => "bloublou", 
+			"content" => "Encore un post !", 
+			"created" => time(), 
+			"updated" => "", 
+			"approved" => 1
+		);
+
+		$posts[$new_post['id']] = $new_post;
+
+		var_dump($posts);
+
+		$save_file ="";
+
+		foreach ($posts as $key => $group) {
+			
+			$save_file .= "[".$key."]\n";
+
+			foreach($group as $key => $item) {
+
+				$save_file .= $key."=".$item."\n";
+
+			}
+
+			//$save_file = substr($save_file, 1);
+
+			if(false===@file_put_contents(PATH_TO_ROOT.'/kernel/database/local/data/posts.ini', $save_file)) {
+
+				echo 'erreur :/';
+
+			}
+
+		}
+
+		/*if(unlink(PATH_TO_ROOT.'/modules/blog/voir')) {
+
+			echo "a été supprimé.";
+
+		}*/
+
+		//Query::new_entry($new_post);
+
 	}
 
 }
