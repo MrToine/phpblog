@@ -21,6 +21,16 @@ class BlogController extends ModuleController {
 
 		Query::show_list($posts, 'name', true, PATH_TO_ROOT.'/modules/blog/voir').'<hr />';
 
+		echo '<hr />Maintenant, affichons les infos de la seconde entrée : <br />';
+
+		$retour = Query::show($posts, '2');
+
+		var_dump($retour);
+
+		echo '<hr />Ha ! "created" n\'est pas une date valide... On va la transformer avec la methode "Query::parse_date()"<br />';
+
+		echo Query::parse_date($retour['created']);
+
 	}
 
 }

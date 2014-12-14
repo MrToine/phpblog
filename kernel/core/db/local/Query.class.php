@@ -100,4 +100,25 @@ class Query {
 
 	}
 
+	public static function show($data, $group) {
+
+		foreach($data[$group] as $key => $value) {
+
+			$array_data[$key] =  $value;
+
+		}
+
+		return $array_data;
+
+	}
+
+	public static function parse_date($date) {
+
+		$date = intval($date);
+		$datetime = date("d-m-Y à H:i:s", $date); 
+
+		return $datetime;
+
+	}
+
 }
